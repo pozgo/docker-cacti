@@ -1,9 +1,8 @@
 FROM polinux/centos7:latest
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
-RUN \
-yum update -y && \
-yum install -y --nogpgcheck cacti mariadb-server
+RUN yum update -y 
+RUN yum install -y --nogpgcheck cacti mariadb-server
 
 # Remove pre-installed database
 RUN rm -rf /var/lib/mysql/*
@@ -14,7 +13,7 @@ RUN mkdir -p /data/install
 ADD install/ /data/install 
 
 # Installing Cacti Database 
-RUN cd /data/install &&\
+RUN cd /data/install && \
 ./mysql.sh
 
 RUN mkdir -p /data/config/
