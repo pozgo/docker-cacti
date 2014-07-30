@@ -1,1 +1,0 @@
-*/5 * * * *	cacti	/usr/bin/php /usr/share/cacti/poller.php > /dev/null 2>&
