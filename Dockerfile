@@ -23,8 +23,8 @@ RUN mv /data/config/info.php /var/www/html/info.php
 RUN mv /data/config/db.php /etc/cacti/db.php
 RUN mv /data/config/cacti.conf /etc/httpd/conf.d/cacti.conf
 RUN mv /data/config/spine.conf /usr/local/spine/etc/spine.conf
-RUN cd /data/install/ && \
-./cron.sh
+#RUN cd /data/install/ && \
+#./cron.sh
 
 # Add UTC Timezone to php.ini
 RUN echo "date.timezone = UTC" >> /etc/php.ini
