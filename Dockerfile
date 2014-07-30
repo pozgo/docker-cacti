@@ -14,14 +14,14 @@ ADD install/ /data/install
 
 # Installing Cacti Database 
 RUN cd /data/install && \
-./mysql.sh
+./mysql.sh && \
+./spine.sh
 
 RUN mkdir -p /data/config/
-
 ADD config/ /data/config/
-RUN cp /data/config/info.php /var/www/html/info.php
+RUN mv /data/config/info.php /var/www/html/info.php
 RUN mv /data/config/db.php /etc/cacti/db.php
 RUN mv /data/config/cacti.conf /etc/httpd/conf.d/cacti.conf
-
+RUN mv /data/config/spine.conf /usr/local/spine/etc/spine.conf
 
 ADD supervisord.conf /etc/supervisord.d/services.conf

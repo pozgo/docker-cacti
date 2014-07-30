@@ -26,3 +26,12 @@ Cacti default login details :
 user:   admin
 
 pass:   admin
+
+### FYI
+During Web Installation add spine directory:
+
+`/usr/local/spine/bin/spine`
+
+If everything is ok you should see:
+
+`[OK: FILE FOUND]` 
