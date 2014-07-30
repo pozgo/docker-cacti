@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Add crontab job
-bash -l -c sudo cat /data/config/cron.cacti | crontab -
+echo "*/5 * * * *cacti/usr/bin/php /usr/share/cacti/poller.php > /dev/null 2>&" | crontab -
