@@ -21,5 +21,6 @@ RUN mkdir -p /data/config/
 ADD config/ /data/config/
 RUN cp /data/config/info.php /var/www/html/info.php
 RUN mv /data/config/db.php /etc/cacti/db.php
+RUN mv /data/config/cacti.conf /etc/httpd/conf.d/cacti.conf
 
 ADD supervisord.conf /etc/supervisord.d/services.conf

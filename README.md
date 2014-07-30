@@ -18,9 +18,11 @@ or
 Follow the on screen instructions.
 ### Login Details
 DB Username:    cactiuser
+
 DB Password:    password
 
 Cacti default login details :
 
 user:   admin
+
 pass:   admin
