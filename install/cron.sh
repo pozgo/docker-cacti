@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Add crontab job
-cat /data/config/cron.cacti | crontab -
+bash -l -c sudo cat /data/config/cron.cacti | crontab -
