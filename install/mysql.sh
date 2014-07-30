@@ -13,4 +13,4 @@ sleep 10
 
 echo  "Cacti User created..."
 
-mysql -v -u cactiuser -ppassword cacti < /data/install/cacti.sql 
+mysql -u cactiuser -ppassword cacti < /data/install/cacti.sql 

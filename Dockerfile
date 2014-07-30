@@ -23,8 +23,9 @@ RUN mv /data/config/info.php /var/www/html/info.php
 RUN mv /data/config/db.php /etc/cacti/db.php
 RUN mv /data/config/cacti.conf /etc/httpd/conf.d/cacti.conf
 RUN mv /data/config/spine.conf /usr/local/spine/etc/spine.conf
-RUN cd /data/install/ && \
-bash -l ./cron.sh
+
+# Add new cronjob with poller 
+RUN bash -l -c echo "*/5 * * * *	cacti	/usr/bin/php /usr/share/cacti/poller.php > /dev/null 2>&" | crontab -
 
 # Add UTC Timezone to php.ini
 RUN echo "date.timezone = UTC" >> /etc/php.ini
