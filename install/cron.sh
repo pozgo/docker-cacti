@@ -2,7 +2,7 @@
 
 echo "Starting cron deamon first"
 /usr/sbin/crond
-
+touch /etc/cron.allow
 echo "root" >> /etc/cron.allow  
 echo "cacti" >> /etc/cron.allow 
 echo "Adding New cronjob for cacti poller"
