@@ -8,3 +8,5 @@ cd cacti-spine-0.8.8b/
 ./configure 
 make 
 make install 
+
+exit 0
