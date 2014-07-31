@@ -1,0 +1,8 @@
+auth sufficient pam_rootok.so
+auth required pam_env.so
+auth include system-auth
+account sufficient pam_succeed_if.so uid = 0 use_uid quiet
+account sufficient pam_listfile.so onerr=succeed item=user sense=allow file=/etc/security/access-cron.conf
+account include system-auth
+session required pam_loginuid.so
+session include system-auth
