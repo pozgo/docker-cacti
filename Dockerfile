@@ -1,4 +1,4 @@
-FROM polinux/centos7:latest
+FROM polinux/centos7
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
 ADD install/ /data/install 
@@ -19,4 +19,4 @@ cd /data/install/ && \
 ./cron.sh && \
 echo "date.timezone = UTC" >> /etc/php.ini
 
-ADD supervisord.conf /etc/supervisord.d/services.conf
+ADD supervisord.conf /etc/supervisord.d/cacti.conf
