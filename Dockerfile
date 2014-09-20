@@ -19,4 +19,4 @@ cd /data/install/ && \
 ./cron.sh && \
 echo "date.timezone = UTC" >> /etc/php.ini
 
-ADD supervisord.conf /etc/supervisord.d/cacti.conf
+ADD supervisord.conf /etc/supervisor.d/cacti.conf
