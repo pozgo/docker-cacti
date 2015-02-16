@@ -1,42 +1,64 @@
-###Cacti 0.8.8b server container
-Installation based on Centos 7 (polinux/centos7:latest).
+###Cacti Server (CentOS7 + Supervisor)
+[Docker Image](https://registry.hub.docker.com/u/polinux/cacti/) with Cacti server using CentOS7 and Supervisor.
+Image is using external datbase. 
 
-Built in Mysql Database server into container. 
+### Database deployment 
+To be able to connect to database we would need one to be running first. Easiest way to do that is to use another docker image. For this purpose we will use our [million12/mariadb](https://registry.hub.docker.com/u/million12/mariadb/) image as our database.
 
-### Starting container
+**For more information about million12/MariaDB see our [documentation.](https://github.com/million12/docker-mariadb) **
 
-`docker run -d --name cacti --net host polinux/cacti:latest`
+Example:  
+`docker run \`  
+`-d \`  
+`--name cacti-db \`  
+`-p 3306:3306 \`  
+`--env="MARIADB_USER=cactiuser" \`  
+`--env="MARIADB_PASS=my_password" \`  
+`million12/mariadb`  
 
-Access through 
+***Remember to use the same credentials when deploying cacti image.***
 
-`localhost/cacti` 
 
-or
+### Environmental Variable
+In this Image you can use environmental variables to connect into external MySQL/MariDB database.  
 
-`dockerhost.ip/cacti`
+`DB_USER` = database user  
+`DB_PASS` = database password  
+`DB_ADDRESS` = database address (either ip or domain-name).
+
+### Cacti Deployment
+Now when we have our database running we can deploy cacti image with apropriate envirnmental variables set. 
+
+Example: 
+`docker run \`  
+`-d \`  
+`--name cacti \`  
+`-p 80:80 \`  
+`--env="DB_ADDRESS=database_ip" \`  
+`--env="DB_USER=cactiuser" \`  
+`--env="DB_PASS=my_password" \`  
+`polinux/cacti`
+
+### Access Cacti web interface 
+To log in into cacti for the first time use credentials `admin:admin`. System will ask you to change those when logged in for the firts time. 
+
+Access web interface under 
+
+> [dockerhost.ip/cacti]()  
 
 Follow the on screen instructions.
 
-### Spine Setup
-Fill later :)
+### Update Spine settings 
+Spine need to be set after installation is finished through Cacti system/settings menu. 
 
-### Login Details
-DB Username:    cactiuser
-
-DB Password:    password
-
-Cacti default login details :
-
-user:   admin
-
-pass:   admin
-
-### FYI
-During Web Installation add spine directory:
-
+Under `Configuration/Settings/Path` and edit **"Spine Poller File Path"** with:  
 `/usr/local/spine/bin/spine`
 
-If everything is ok you should see:
+![Spine Setup](images/spine.png)
 
-`[OK: FILE FOUND]` 
+## Author
+  
+Author: Przemyslaw Ozgo (<linux@ozgo.info>)
+
+---
 
