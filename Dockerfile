@@ -1,28 +1,22 @@
-FROM polinux/centos7:latest
+FROM million12/centos-supervisor
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
-ADD install/ /data/install 
-ADD config/ /data/config
+RUN \
+    yum update -y && \
+    yum install -y tar gcc make mariadb-devel net-snmp-devel cacti && \
+    curl -o /tmp/cacti-spine.tgz http://www.cacti.net/downloads/spine/cacti-spine-0.8.8c.tar.gz && \
+    mkdir -p /tmp/spine && \
+    tar zxvf /tmp/cacti-spine.tgz -C /tmp/spine --strip-components=1 && \
+    rm -f /tmp/cacti-spine.tgz && \
+    cd /tmp/spine/ && ./configure && make && make install && \
+    echo "date.timezone = UTC" >> /etc/php.ini && \
+    rm -rf /tmp/spine && \
+    # Remove packages that are not needed anymore
+    yum remove -y gcc make tar mariadb-devel && \
+    yum clean all
 
-RUN yum update -y && \
-yum install -y --nogpgcheck cacti mariadb-server && \
-yum clean all && \
-rm -rf /var/lib/mysql/* && \
-mysql_install_db --user=mysql --ldata=/var/lib/mysql/ && \
-cd /data/install && \
-./mysql.sh && \
-./spine.sh && \
-mv /data/config/info.php /var/www/html/info.php && \
-mv /data/config/db.php /etc/cacti/db.php && \
-mv /data/config/cacti.conf /etc/httpd/conf.d/cacti.conf && \
-mv /data/config/spine.conf /usr/local/spine/etc/spine.conf && \
-cd /data/install/ && \
-./cron.sh && \
-echo "date.timezone = UTC" >> /etc/php.ini && \
+ENV DB_USER=user DB_PASS=password DB_ADDRESS=127.0.0.1
 
-# Clenaning installation directories
-rm -rf /data/install/cacti-spine-0.8.8b
-
-ADD supervisord.conf /etc/supervisor.d/cacti.conf
+COPY container-files /
 
 EXPOSE 80
