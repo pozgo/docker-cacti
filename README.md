@@ -29,7 +29,7 @@ In this Image you can use environmental variables to connect into external MySQL
 ### Cacti Deployment
 Now when we have our database running we can deploy cacti image with apropriate envirnmental variables set. 
 
-Example: 
+Example:  
 `docker run \`  
 `-d \`  
 `--name cacti \`  
