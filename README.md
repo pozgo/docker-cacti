@@ -2,7 +2,7 @@
 [Docker Image](https://registry.hub.docker.com/u/polinux/cacti/) with Cacti server using CentOS7 and Supervisor.
 Image is using external datbase. 
 
-### Database deployment 
+### Database deployment
 To be able to connect to database we would need one to be running first. Easiest way to do that is to use another docker image. For this purpose we will use our [million12/mariadb](https://registry.hub.docker.com/u/million12/mariadb/) image as our database.
 
 **For more information about million12/MariaDB see our [documentation.](https://github.com/million12/docker-mariadb) **
@@ -20,14 +20,14 @@ Example:
 
 
 ### Environmental Variable
-In this Image you can use environmental variables to connect into external MySQL/MariDB database.  
+In this Image you can use environmental variables to connect into external MySQL/MariaDB database.
 
 `DB_USER` = database user  
 `DB_PASS` = database password  
 `DB_ADDRESS` = database address (either ip or domain-name).
 
 ### Cacti Deployment
-Now when we have our database running we can deploy cacti image with apropriate envirnmental variables set. 
+Now when we have our database running we can deploy cacti image with appropriate environmental variables set.
 
 Example:  
 `docker run \`  
