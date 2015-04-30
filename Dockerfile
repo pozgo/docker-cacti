@@ -9,7 +9,7 @@ RUN \
     tar zxvf /tmp/cacti-spine.tgz -C /tmp/spine --strip-components=1 && \
     rm -f /tmp/cacti-spine.tgz && \
     cd /tmp/spine/ && ./configure && make && make install && \
-    echo "date.timezone = UTC" >> /etc/php.ini && \
+    echo "date.timezone = CET" >> /etc/php.ini && \
     rm -rf /tmp/spine && \
     # Remove packages that are not needed anymore
     yum remove -y gcc make tar mariadb-devel && \
