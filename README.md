@@ -48,14 +48,6 @@ Access web interface under
 
 Follow the on screen instructions.
 
-### Update Spine settings 
-Spine need to be set after installation is finished through Cacti system/settings menu. 
-
-Under `Configuration/Settings/Path` and edit **"Spine Poller File Path"** with:  
-`/usr/local/spine/bin/spine`
-
-![Spine Setup](images/spine.png)
-
 ## Author
   
 Author: Przemyslaw Ozgo (<linux@ozgo.info>)
