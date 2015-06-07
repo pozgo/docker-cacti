@@ -8,13 +8,14 @@ To be able to connect to database we would need one to be running first. Easiest
 **For more information about million12/MariaDB see our [documentation.](https://github.com/million12/docker-mariadb) **
 
 Example:  
-`docker run \`  
-`-d \`  
-`--name cacti-db \`  
-`-p 3306:3306 \`  
-`--env="MARIADB_USER=cactiuser" \`  
-`--env="MARIADB_PASS=my_password" \`  
-`million12/mariadb`  
+
+    docker run \
+    -d \
+    --name cacti-db \
+    -p 3306:3306 \
+    --env="MARIADB_USER=cactiuser" \
+    --env="MARIADB_PASS=my_password" \
+    million12/mariadb
 
 ***Remember to use the same credentials when deploying cacti image.***
 
@@ -30,21 +31,22 @@ In this Image you can use environmental variables to connect into external MySQL
 Now when we have our database running we can deploy cacti image with appropriate environmental variables set.
 
 Example:  
-`docker run \`  
-`-d \`  
-`--name cacti \`  
-`-p 80:80 \`  
-`--env="DB_ADDRESS=database_ip" \`  
-`--env="DB_USER=cactiuser" \`  
-`--env="DB_PASS=my_password" \`  
-`polinux/cacti`
+
+    docker run \
+    -d \
+    --name cacti \
+    -p 80:80 \
+    --env="DB_ADDRESS=database_ip" \
+    --env="DB_USER=cactiuser" \
+    --env="DB_PASS=my_password" \
+    polinux/cacti
 
 ### Access Cacti web interface 
 To log in into cacti for the first time use credentials `admin:admin`. System will ask you to change those when logged in for the firts time. 
 
 Access web interface under 
 
-> [dockerhost.ip/cacti]()  
+[dockerhost.ip/cacti]()  
 
 Follow the on screen instructions.
 
