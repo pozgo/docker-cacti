@@ -18,9 +18,9 @@ dependencies:
 test:
   override:
     - while true; do if grep "You can now connect to this MariaDB Server" -a ${CIRCLE_ARTIFACTS}/db.log; then break; else sleep 1; fi done
-    - docker run -d --name cacti --link db:cacti.db -p 80:80 --env="DB_ADDRESS=cacti.db" --env="DB_USER=$DB_USER" --env="DB_PASS=$DB_PASS" polinix/cacti
+    - docker run -d --name cacti --link db:cacti.db -p 80:80 --env="DB_ADDRESS=cacti.db" --env="DB_USER=$DB_USER" --env="DB_PASS=$DB_PASS" polinux/cacti
     - docker logs -f cacti | tee -a ${CIRCLE_ARTIFACTS}/cacti.log:
         background: true
-    - while true; do if grep "already running" -a ${CIRCLE_ARTIFACTS}/cacti.log; then break; else sleep 1; fi done
-    # Check Zabbix Web interface status
+    - while true; do if grep "Cacti Server UP" -a ${CIRCLE_ARTIFACTS}/cacti.log; then break; else sleep 1; fi done
+    # Check Cacti Web interface status
     - curl -s -L --head http://127.0.0.1/ | grep "HTTP/1.1 200 OK"
