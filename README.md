@@ -1,5 +1,4 @@
 ###Cacti Server (CentOS7 + Supervisor)
-
 [![Circle CI](https://circleci.com/gh/pozgo/docker-cacti/tree/master.svg?style=svg&circle-token=f36545fc3efb2fa189ce90bd0cda6d19022eddc0)](https://circleci.com/gh/pozgo/docker-cacti/tree/master)
 [![GitHub Open Issues](https://img.shields.io/github/issues/pozgo/docker-cacti.svg)](https://github.com/pozgo/docker-cacti/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/pozgo/docker-cacti.svg)](https://github.com/pozgo/docker-cacti)

@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  db:
+    container_name: db
+    image: million12/mariadb
+    environment:
+      MARIADB_USER: cactiuser
+      MARIADB_PASS: my_password
+  cacti:
+    image: polinux/cacti
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    environment:
+      DB_USER: cactiuser
+      DB_PASS: my_password
+      DB_ADDRESS: db
